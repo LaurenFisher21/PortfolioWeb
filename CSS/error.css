@@ -1,0 +1,142 @@
+@font-face {
+    font-family: manFont;
+    src: url(../Fonts/Mandan-Demo.otf);
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: overlay; /* overlay has been deprepriated, use javascript later */
+}
+
+body.scanlines .scanlines, body.scanlines .radial, body.scanlines .scanline, body.flicker .flicker, body.noise .noise 
+{
+    display: flex;
+}
+
+.overlay
+{
+    top: 0;
+    left: 0;
+    position: fixed;
+    pointer-events: none;
+}
+
+.overlay.noise
+{
+    z-index: 500;
+    animation: grain 8s steps(10) infinite;
+    background-image: url(../img/noise-back.png);
+    height: 400%;
+    left: -50%;
+    top: -150%;
+    width: 300%;
+    background-size: auto;
+    opacity: 0.2;
+}
+
+.overlay.radial 
+{
+    z-index: 1000;
+    background-image: radial-gradient(var(--gradient-radial), rgba(0, 0, 0, 0.3) 100%);
+}
+
+.overlay.flicker 
+{
+    z-index: 950;
+    background: rgba(9, 8, 8, 0.05);
+    animation: flicker 0.05s infinite;
+    animation-timing-function: linear;
+}
+
+.overlay.scanlines
+{
+    z-index: 900;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+     linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.03), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+}
+
+.overlay.scanline {
+    z-index: 1010;
+    animation: scanline 7.77s linear infinite;
+}
+
+.overlay.scanline::after {
+    height: 1px;
+    width: 100%;
+    background: black;
+    opacity: 0.5;
+    pointer-events: none;
+    content: '';
+}
+
+@keyframes flicker 
+{ 
+    0% { opacity: 0; } 
+    10% { opacity: 0.9; } 
+    20% { opacity: 0.99 } 
+    30% { opacity: 0; } 
+    40% { opacity: 0.9; } 
+    50% { opacity: 0.99; } 
+    60% { opacity: 0; } 
+    70% { opacity: 0.9; } 
+    80% { opacity: 0.99; } 
+    90% { opacity: 0; } 
+    100% { opacity: 0.9; }}
+
+/* ANIMATE UNIQUE SCANLINE */
+@keyframes scanline 
+{
+  0% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes grain 
+{
+    0%, 100% { transform:translate(0, 0) }
+    10% { transform:translate(-5%, -10%) }
+    20% { transform:translate(-15%, 5%) }
+    30% { transform:translate(7%, -25%) }
+    40% { transform:translate(-5%, 25%) }
+    50% { transform:translate(-15%, 10%) }
+    60% { transform:translate(15%, 0%) }
+    70% { transform:translate(0%, 15%) }
+    80% { transform:translate(3%, 35%) }
+    90% { transform:translate(-10%, 10%) }
+}
+
+@media (prefers-reduced-motion: reduce) 
+{
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+.err
+{
+    font-family: manFont;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.secret
+{
+    opacity: 0;
+    text-align: right;
+}
