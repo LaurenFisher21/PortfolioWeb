@@ -13,7 +13,7 @@ body
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     overflow-y: overlay; /* overlay has been deprepriated, use javascript later */
 }
 
@@ -24,12 +24,12 @@ body
 
 ::-webkit-scrollbar-track
 {
-    background: #333;
+    background: #757575;
 }
 
 ::-webkit-scrollbar-thumb
 {
-    background: #161616;
+    background: #454545;
 }
 
 body.scanlines .scanlines, body.scanlines .radial, body.scanlines .scanline, body.flicker .flicker, body.noise .noise 
@@ -217,7 +217,7 @@ li a:active
 .greeting
 {
     font-family: manFont;
-    font-size: 50px;
+    font-size: 60px;
     color: #d6d6d6;
     text-align: center;
 }
@@ -225,7 +225,7 @@ li a:active
 .questions
 {
     font-family: manFont;
-    font-size: 35px;
+    font-size: 45px;
     color: #d6d6d6;
     margin: 1vw 1vw;
     text-align: center;

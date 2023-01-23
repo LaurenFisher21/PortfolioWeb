@@ -130,9 +130,10 @@ body.scanlines .scanlines, body.scanlines .radial, body.scanlines .scanline, bod
 .err
 {
     font-family: manFont;
-    font-size: 30px;
+    font-size: 60px;
     text-align: center;
     vertical-align: middle;
+    color: #e6e6e6;
 }
 
 .secret
